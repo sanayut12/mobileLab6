@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>คอร์สเรียนฟรี</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item detail *ngFor="let c of courses">
+
+      <ion-label>
+        <ion-text color="primary">
+          <h3>{{c.c_title}}</h3>
+        </ion-text>
+        <p>{{c.c_detail}}</p>
+      </ion-label>
+      <ion-badge slot="end" color="danger">{{c.c_view}}</ion-badge>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
