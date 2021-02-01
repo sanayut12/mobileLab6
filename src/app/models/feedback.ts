@@ -1,4 +1,4 @@
 export interface FeedBack {
-    code : string ;
+    code : Number ;
     message : string;
 }

@@ -28,7 +28,7 @@ export class SignupPage implements OnInit {
     const password = form.password;
 
     const loading = await this.loadingCtrl.create({
-      spinner : 'bubbles',
+      spinner : 'circular',
       message : 'กำลังบันทึกข้อมูล...'
     })
 
@@ -37,7 +37,7 @@ export class SignupPage implements OnInit {
     this.authService.signup(username,email,password).subscribe(
       async (feedback : FeedBack) =>{
         this.feedback = feedback;
-        if (this.feedback["status"] === "200"){
+        if ( this.feedback.code == 200){
           const alert = await this.alertCtrl.create({
             message : this.feedback.message,
             buttons : ['ตกลง']
@@ -50,17 +50,21 @@ export class SignupPage implements OnInit {
             message : this.feedback.message,
             buttons : ['ตกลง']
           })
-          await alert.present()
+          await alert.present()  //current
         }
       }
     )
+    
+
     async (err) =>{
         console.log(err)
         await loading.dismiss();
     }
 
-    async ()=>{
+    async function add(){
       await loading.dismiss();
-    }
+    } 
+
+    await add();
   }
 }
